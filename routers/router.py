@@ -74,6 +74,6 @@ def get_restaurant(request: Request, user_id: int):
     session = Session(engine)
     stmt = select(RestaurantModel).where(RestaurantModel.owner_id == user_id)
     result = session.execute(stmt)
-    restaurant = result.scalars().one_or_none()
+    restaurant = result.scalars().all()
     session.close()
     return restaurant

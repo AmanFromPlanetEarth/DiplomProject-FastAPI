@@ -58,7 +58,6 @@ def user_delete(request: Request, user_id:int):
     return result
 
 #Рестораны
-
 @restaraunt_router.post(path="/create_restaurant/")
 def add_restaurant(request: Request, restaurant: RestaurantCreate):
     session = Session(engine)
@@ -66,5 +65,15 @@ def add_restaurant(request: Request, restaurant: RestaurantCreate):
                                           owner_id = restaurant.owner_id)
     session.execute(stmt)
     session.commit()
+    session.close()
+    return restaurant
+
+
+@restaraunt_router.get(path="/get_restaurant/")
+def get_restaurant(request: Request, user_id: int):
+    session = Session(engine)
+    stmt = select(RestaurantModel).where(RestaurantModel.owner_id == user_id)
+    result = session.execute(stmt)
+    restaurant = result.scalars().one_or_none()
     session.close()
     return restaurant

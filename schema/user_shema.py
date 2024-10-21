@@ -1,15 +1,17 @@
 from pydantic import BaseModel
 
 class UserCreate(BaseModel):
-    name: str | None = None
-    phone: int | None = None
+    name: str
+    phone: int
 
 class UserUpdate(BaseModel):
-    name: str = None
-    phone: int = None
+    name: str
+    phone: int
 
 class RestaurantCreate(BaseModel):
-    pass
+    name: str
+    owner_id: int
 
 class RestaurantUpdate(BaseModel):
-    pass
+    name: str
+    owner_id: int

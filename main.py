@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 from schema.user_shema import UserCreate
 from routers.router import user_router, restaraunt_router
-from database import engine
+from database.DB import engine
 from models.model import UserModel, Model, RestaurantModel
 
-app = FastAPI()
+app = FastAPI(title="Платформа по доставке еды")
 
 app.include_router(user_router)
 app.include_router(restaraunt_router)

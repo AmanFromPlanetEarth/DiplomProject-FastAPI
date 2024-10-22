@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from schema.user_shema import UserCreate
 from models.model import UserModel, RestaurantModel
 from schema.user_shema import UserCreate,UserUpdate, RestaurantCreate, RestaurantUpdate
-from database import engine
+from database.DB import engine
 from sqlalchemy import select, insert, update, delete
 
 
